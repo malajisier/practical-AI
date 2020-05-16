@@ -9,7 +9,7 @@ from utils import compose
 
 @wraps(Conv2D)
 def DarknetConv2D(*args, **kwargs):
-    conv_kwargs = {'kernel_regularizer': 12(5e-4)}
+    conv_kwargs = {'kernel_regularizer': l2(5e-4)}
     conv_kwargs['padding'] = 'valid' if kwargs.get('strides') == (2, 2) else 'same'
     conv_kwargs.update(kwargs)
     return Conv2D(*args, **conv_kwargs)
